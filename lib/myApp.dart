@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:grokking_dsa/View-Model/bottomNavBloc/bottom_nav_bloc.dart';
 import 'package:grokking_dsa/View/Home/myHomepage.dart';
 
 class MyApp extends StatelessWidget {
@@ -11,7 +13,14 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home:const MyHomePage(),
+      home: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => BottomNavBloc(),
+          ),
+        ],
+        child: const MyHomePage(),
+      ),
     );
   }
 }
