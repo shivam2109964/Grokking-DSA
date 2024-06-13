@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:grokking_dsa/Model/Homepage%20Model/LinearDataStruct.dart';
+import 'package:grokking_dsa/Model/Homepage%20Model/NonLinearDataStruct.dart';
 import 'package:grokking_dsa/Model/MediaQuary/mediaQuary.dart';
 import 'package:grokking_dsa/Model/Overall/ClickHereButton.dart';
 
-class LinearDataStruct extends StatelessWidget {
-  const LinearDataStruct({super.key});
+class NonLinearDataStruct extends StatelessWidget {
+  const NonLinearDataStruct({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextInLinearDataStrcut textInLinearDataStrcut = TextInLinearDataStrcut();
+    TextInNonLinearDataStrcut textInNonLinearDataStrcut = TextInNonLinearDataStrcut();
     ClickHereButton clickHereButton = ClickHereButton();
     return Container(
       height: ScreenSize.height(context) * 0.35,
@@ -25,7 +25,7 @@ class LinearDataStruct extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Text(
-              textInLinearDataStrcut.titleReturn,
+              textInNonLinearDataStrcut.titleReturn,
               style: GoogleFonts.aBeeZee(
                 fontSize: 25,
               ),
@@ -41,10 +41,8 @@ class LinearDataStruct extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20, left: 20),
                   child: Text(
-                    textInLinearDataStrcut.descReturn,
-                    style: GoogleFonts.inter(
-                      fontSize: 15,
-                    ),
+                    textInNonLinearDataStrcut.descReturn,
+                    style: GoogleFonts.inter(fontSize: 15),
                     textAlign: TextAlign.center,
                   ),
                 )

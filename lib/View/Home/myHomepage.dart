@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grokking_dsa/Model/AppTitle/appTitle.dart';
+import 'package:grokking_dsa/View/BottomBar/bottomBarNav.dart';
 import 'package:grokking_dsa/View/Home/HomeElement/HomeContainer.dart';
+import 'package:grokking_dsa/View/Home/HomeElement/HomeContainer2.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
@@ -8,16 +10,16 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: AppTitle(),
+      appBar: AppBar(
+        title: AppTitle(),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [LinearDataStruct(), NonLinearDataStruct()],
         ),
-        body: const Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              LinearDataStruct()
-            ],
-          ),
-        ));
+      ),
+      bottomNavigationBar: const BottombarNav(),
+    );
   }
 }
