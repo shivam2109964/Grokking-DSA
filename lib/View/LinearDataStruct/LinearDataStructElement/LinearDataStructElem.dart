@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grokking_dsa/Model/Linear%20Data%20Struct/Card.dart';
 import 'package:grokking_dsa/Model/Overall/ClickHereButton.dart';
-import 'package:grokking_dsa/View/LinearDataStruct/Array/arrayHome.dart';
 
 class CustomizeCard extends StatelessWidget {
   final CardDetails cardDetails;
-  const CustomizeCard({super.key, required this.cardDetails});
+  final Widget navigateTo;
+  const CustomizeCard({
+    super.key,
+    required this.cardDetails,
+    required this.navigateTo,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +50,7 @@ class CustomizeCard extends StatelessWidget {
             ),
           ),
         ),
-        Positioned(
+         Positioned(
           bottom: -5,
           right: 8,
           child: MaterialButton(
@@ -54,7 +58,7 @@ class CustomizeCard extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const ArrayHome(),
+                  builder: (context) => navigateTo,
                 ),
               );
             },
