@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:grokking_dsa/Model/Homepage%20Model/LinearDataStruct.dart';
 import 'package:grokking_dsa/Model/MediaQuary/mediaQuary.dart';
 import 'package:grokking_dsa/Model/Overall/ClickHereButton.dart';
+import 'package:grokking_dsa/View/LinearDataStruct/LinearHome.dart';
 
 class LinearDataStruct extends StatelessWidget {
   const LinearDataStruct({super.key});
@@ -51,7 +52,14 @@ class LinearDataStruct extends StatelessWidget {
               ],
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LinearHome(),
+                  ),
+                );
+              },
               child: Text(clickHereButton.text),
             ),
           ],

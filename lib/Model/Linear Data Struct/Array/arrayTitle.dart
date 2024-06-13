@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // ignore: must_be_immutable
-class AppTitle extends StatelessWidget {
-  String title = "Grokking - DSA";
+class ArrayTitle extends StatelessWidget {
+  String title = "Array";
 
-  AppTitle({super.key});
+  ArrayTitle({super.key});
 
   @override
   Widget build(BuildContext context) {

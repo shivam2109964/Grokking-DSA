@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+// ignore: unused_import
 import 'package:meta/meta.dart';
 
 part 'bottom_nav_event.dart';

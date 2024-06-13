@@ -23,7 +23,10 @@ class MyHomePage extends StatelessWidget {
               return const Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [LinearDataStruct(), NonLinearDataStruct()],
+                  children: [
+                    LinearDataStruct(),
+                    NonLinearDataStruct(),
+                  ],
                 ),
               );
             case 1:
