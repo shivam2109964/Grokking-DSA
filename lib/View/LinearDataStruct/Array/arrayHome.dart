@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -14,6 +16,7 @@ class _ArrayHomeState extends State<ArrayHome> {
   TextEditingController textEditingController = TextEditingController();
   TextEditingController textEditingController1 = TextEditingController();
   TextEditingController textEditingController2 = TextEditingController();
+  Random random = Random();
 
   List<String> arrayData = List.filled(10, 'null');
 
@@ -69,6 +72,33 @@ class _ArrayHomeState extends State<ArrayHome> {
     });
   }
 
+  void removeFirst() {
+    setState(() {
+      for (int i = 0; i < arrayData.length - 1; i++) {
+        arrayData[i] = arrayData[i + 1];
+        arrayData[arrayData.length - 1] = 'null';
+      }
+    });
+  }
+
+  void removeRandom() {
+    setState(() {
+      int randomIndcies = random.nextInt(9);
+      for (int i = randomIndcies; i < arrayData.length - 1; i++) {
+        arrayData[i] = arrayData[i + 1];
+        arrayData[arrayData.length - 1] = 'null';
+      }
+    });
+  }
+
+  void removeAll() {
+    setState(() {
+      for (int i = 0; i <= arrayData.length - 1; i++) {
+        arrayData[i] = 'null';
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,7 +128,7 @@ class _ArrayHomeState extends State<ArrayHome> {
                 direction: Axis.horizontal,
                 children: [
                   Text(
-                    "Imagine you have a list of items you need to buy at the grocery store. This list helps you keep track of everything you need in one place. In programming, an array is like this list. It's a way to store multiple items (or elements) of the same type (like all fruits or all vegetables) under one name. Each item in the list (or array) has a specific position, just like each item on your shopping list has a number or place in the order.",
+                    "Imagine you have a list of items you need to buy at the grocery store. This list helps you keep track of everything you need in one place. In programming, an array is like this list. It's a way to store multiple items (or elements) of the same type (like all fruits or all vegetables) under one name. Each item in the list (or array) has a specific position, just like each item on your shopping list has a number or place in the order. \nHere is a visual representation of array operations. We create 10 empty boxes and manipulate data using basic array operations.",
                     style: GoogleFonts.aBeeZee(fontSize: 15),
                   ),
                 ],
@@ -151,178 +181,308 @@ class _ArrayHomeState extends State<ArrayHome> {
               const SizedBox(
                 height: 20,
               ),
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text(
-                          "Adding element",
-                          style: GoogleFonts.aBeeZee(fontSize: 18),
+                      Container(
+                        width: 125,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
+                          child: Text(
+                            "Adding element",
+                            style: GoogleFonts.aBeeZee(fontSize: 18),
+                          ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text(
-                          "Removing Last element",
-                          style: GoogleFonts.aBeeZee(fontSize: 18),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text(
-                          "Removing element at",
-                          style: GoogleFonts.aBeeZee(fontSize: 18),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 20.0),
-                        child: Text(
-                          "Removing first element",
-                          style: GoogleFonts.aBeeZee(fontSize: 18),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: SizedBox(
-                          height: 40,
-                          width: 60,
-                          child: TextField(
-                            controller: textEditingController,
-                            style: GoogleFonts.aBeeZee(fontSize: 17),
-                            textAlign: TextAlign.center,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(20),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: SizedBox(
+                            height: 40,
+                            width: 60,
+                            child: TextField(
+                              controller: textEditingController,
+                              style: GoogleFonts.aBeeZee(fontSize: 17),
+                              textAlign: TextAlign.center,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
                                 ),
                               ),
-                            ),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(2)
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: SizedBox(
-                          height: 40,
-                          width: 60,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                              color: Colors.grey,
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                LengthLimitingTextInputFormatter(2)
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: SizedBox(
-                          height: 40,
-                          width: 60,
-                          child: TextField(
-                            controller: textEditingController1,
-                            style: GoogleFonts.aBeeZee(fontSize: 17),
-                            textAlign: TextAlign.center,
-                            keyboardType: TextInputType.number,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: MaterialButton(
+                            color: Colors.blue,
+                            onPressed: insert,
+                            child: Text(
+                              "Insert",
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 20,
+                                color: Colors.white,
                               ),
-                            ),
-                            inputFormatters: [
-                              FilteringTextInputFormatter.digitsOnly,
-                              LengthLimitingTextInputFormatter(2)
-                            ],
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: SizedBox(
-                          height: 40,
-                          width: 60,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                              color: Colors.grey,
                             ),
                           ),
                         ),
                       ),
                     ],
                   ),
-                  Column(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: MaterialButton(
-                          color: Colors.blue,
-                          onPressed: insert,
+                      Container(
+                        width: 125,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
                           child: Text(
-                            "Insert",
-                            style: GoogleFonts.aBeeZee(
-                              fontSize: 20,
-                              color: Colors.white,
+                            "Remove last",
+                            style: GoogleFonts.aBeeZee(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: SizedBox(
+                            height: 40,
+                            width: 60,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                                color: Colors.grey,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: MaterialButton(
-                          color: Colors.blue,
-                          onPressed: removeLast,
-                          child: Text(
-                            "Remove",
-                            style: GoogleFonts.aBeeZee(
-                              fontSize: 20,
-                              color: Colors.white,
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: MaterialButton(
+                            color: Colors.blue,
+                            onPressed: removeLast,
+                            child: Text(
+                              "Remove",
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: MaterialButton(
-                          color: Colors.blue,
-                          onPressed: removeAt,
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 125,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
                           child: Text(
-                            "Remove",
-                            style: GoogleFonts.aBeeZee(
-                              fontSize: 20,
-                              color: Colors.white,
+                            "Remove at",
+                            style: GoogleFonts.aBeeZee(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: SizedBox(
+                            height: 40,
+                            width: 60,
+                            child: TextField(
+                              controller: textEditingController1,
+                              style: GoogleFonts.aBeeZee(fontSize: 17),
+                              textAlign: TextAlign.center,
+                              keyboardType: TextInputType.number,
+                              decoration: const InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(20),
+                                  ),
+                                ),
+                              ),
+                              inputFormatters: [
+                                FilteringTextInputFormatter.digitsOnly,
+                                LengthLimitingTextInputFormatter(2)
+                              ],
                             ),
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10.0),
-                        child: MaterialButton(
-                          color: Colors.blue,
-                          onPressed: removeLast,
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: MaterialButton(
+                            color: Colors.blue,
+                            onPressed: removeAt,
+                            child: Text(
+                              "Remove",
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 125,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
                           child: Text(
-                            "Remove",
-                            style: GoogleFonts.aBeeZee(
-                              fontSize: 20,
-                              color: Colors.white,
+                            "Remove first",
+                            style: GoogleFonts.aBeeZee(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: SizedBox(
+                            height: 40,
+                            width: 60,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: MaterialButton(
+                            color: Colors.blue,
+                            onPressed: removeFirst,
+                            child: Text(
+                              "Remove",
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
+                          child: Text(
+                            "Remove random",
+                            style: GoogleFonts.aBeeZee(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: SizedBox(
+                            height: 40,
+                            width: 60,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: MaterialButton(
+                            color: Colors.blue,
+                            onPressed: removeFirst,
+                            child: Text(
+                              "Remove",
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                         width: 125,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20.0),
+                          child: Text(
+                            "Remove all",
+                            style: GoogleFonts.aBeeZee(fontSize: 18),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: SizedBox(
+                            height: 40,
+                            width: 60,
+                            child: Container(
+                              decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(20),
+                                ),
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: MaterialButton(
+                            color: Colors.blue,
+                            onPressed: removeAll,
+                            child: Text(
+                              "Remove",
+                              style: GoogleFonts.aBeeZee(
+                                fontSize: 20,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
