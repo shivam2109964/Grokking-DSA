@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:grokking_dsa/Model/Linear%20Data%20Struct/Array/arrayTitle.dart';
+import 'package:grokking_dsa/View/LinearDataStruct/Array/topQuestions.dart';
 
 class ArrayHome extends StatefulWidget {
   const ArrayHome({super.key});
@@ -157,8 +158,8 @@ class _ArrayHomeState extends State<ArrayHome> {
                         child: Center(
                           child: Text(
                             arrayData[index],
-                            style: GoogleFonts.abyssinicaSil(fontSize: 30),
-                          ),
+                      style: GoogleFonts.aBeeZee(fontSize: 25),
+                    ),
                         ),
                       ),
                     );
@@ -445,7 +446,7 @@ class _ArrayHomeState extends State<ArrayHome> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Container(
-                         width: 125,
+                        width: 125,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(vertical: 20.0),
                           child: Text(
@@ -491,6 +492,17 @@ class _ArrayHomeState extends State<ArrayHome> {
                   ),
                 ],
               ),
+              Row(
+                children: [
+                  Text(
+                    "Top 10 Questions In Array",
+                    style: GoogleFonts.abyssinicaSil(
+                      fontSize: 25,
+                    ),
+                  ),
+                ],
+              ),
+              const QuestionsInArray()
             ],
           ),
         ),
